@@ -1,0 +1,228 @@
+/* ── DESIGN TOKENS ──────────────────────────────────────────────────────────
+   CSS custom properties (also called variables) let you define values once
+   and reuse them everywhere. As a designer, think of these as your style guide
+   living in the code — change a color here and it updates across the whole site.
+   They always start with --, and you access them with var(--name).
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  --color-bg:        #f9f8f6;
+  --color-surface:   #ffffff;
+  --color-text:      #1a1a1a;
+  --color-muted:     #6b7280;
+  --color-accent:    #2563eb;
+  --color-border:    #e5e7eb;
+
+  --font-body:       'Georgia', serif;
+  --font-ui:         system-ui, sans-serif;
+
+  --space-sm:        0.75rem;
+  --space-md:        1.5rem;
+  --space-lg:        3rem;
+  --space-xl:        6rem;
+
+  --max-width:       1100px;
+  --radius:          8px;
+}
+
+/* ── RESET ──────────────────────────────────────────────────────────────────
+   Browsers have their own default styles (margins, padding, font sizes) that
+   differ slightly between Chrome, Firefox, Safari, etc. This reset zeroes them
+   out so we start from a clean, consistent baseline.
+   ───────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box; /* padding/border are included in an element's width */
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BASE ────────────────────────────────────────────────────────────────────
+   Styles on html/body apply to the entire page unless overridden lower down.
+   ───────────────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth; /* makes anchor links (#work) animate instead of jump */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;       /* 1rem = 16px by default (the browser's base size) */
+  line-height: 1.6;
+}
+
+/* ── LAYOUT UTILITY ─────────────────────────────────────────────────────────
+   A reusable "container" class that centers content and limits its width.
+   Most sections will wrap their content in one of these.
+   ───────────────────────────────────────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;   /* margin-inline is shorthand for margin-left + margin-right */
+  padding-inline: var(--space-md);
+}
+
+/* ── HEADER / NAV ───────────────────────────────────────────────────────────
+   The navigation bar sticks to the top as you scroll (position: sticky).
+   ───────────────────────────────────────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;          /* stacks above other content so it doesn't get covered */
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+nav {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;                    /* flexbox: puts children in a row by default */
+  justify-content: space-between;   /* pushes logo left, links right */
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+nav ul {
+  list-style: none;      /* removes the bullet points */
+  display: flex;
+  gap: var(--space-md);  /* gap adds space between flex children */
+}
+
+nav a {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s; /* animates the color change on hover */
+}
+
+nav a:hover {
+  color: var(--color-text);
+}
+
+/* ── SECTIONS (shared) ───────────────────────────────────────────────────────
+   Rules that apply to every <section> so they all have consistent spacing.
+   ───────────────────────────────────────────────────────────────────────── */
+section {
+  padding-block: var(--space-xl); /* padding-block = padding-top + padding-bottom */
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-ui);
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); } /* clamp(min, preferred, max) — scales with viewport */
+h2 { font-size: 1.75rem; margin-bottom: var(--space-md); }
+h3 { font-size: 1.1rem; margin-bottom: var(--space-sm); }
+
+p  { color: var(--color-muted); max-width: 60ch; } /* ch = width of one character — limits line length for readability */
+
+/* ── INTRO SECTION ───────────────────────────────────────────────────────── */
+#intro {
+  min-height: 70vh;      /* vh = viewport height — this section is at least 70% of the screen tall */
+  display: flex;
+  flex-direction: column;  /* stack children vertically */
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.tagline {
+  font-size: 1.25rem;
+}
+
+/* ── BUTTON ──────────────────────────────────────────────────────────────────
+   The .btn class turns an <a> link into a styled button.
+   ───────────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;           /* makes padding work correctly on a link */
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: opacity 0.2s;
+  align-self: flex-start;          /* prevents button from stretching full width */
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* ── WORK GRID ───────────────────────────────────────────────────────────────
+   CSS Grid is the best tool for laying out cards.
+   repeat(auto-fill, minmax(300px, 1fr)) means:
+   "create as many columns as fit, each at least 300px wide, sharing remaining space equally."
+   This makes the grid automatically responsive — no media queries needed for this part.
+   ───────────────────────────────────────────────────────────────────────── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.work-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;       /* clips the thumbnail image to the card's rounded corners */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);   /* nudges the card up on hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.work-thumb {
+  /* placeholder for a project image — swap background-color for background-image later */
+  height: 200px;
+  background-color: var(--color-border);
+}
+
+.work-card h3,
+.work-card p {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.work-card p {
+  padding-bottom: var(--space-md);
+}
+
+/* ── CONTACT SECTION ─────────────────────────────────────────────────────── */
+#contact {
+  text-align: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--max-width);  /* override the section default to add bg color edge-to-edge of container */
+}
+
+#contact p {
+  text-align: center;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}

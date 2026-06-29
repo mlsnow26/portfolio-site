@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    The <head> is invisible to visitors — it's metadata the browser needs.
+    charset: tells the browser to use UTF-8 (supports most characters/emoji).
+    viewport: makes the page scale correctly on phones.
+    title: the tab label in the browser.
+    link: loads your stylesheet.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madeline Snow — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--
+    <header> is a semantic element — it tells the browser (and screen readers)
+    "this is the top-of-page navigation area." Using the right element for the
+    right job is called semantic HTML, and it's good for accessibility + SEO.
+  -->
+  <header>
+    <nav>
+      <span class="logo">Madeline Snow</span>
+      <!--
+        These links use "#intro", "#work", "#contact" — the # means
+        "jump to the element on this page with that id." It's called an
+        anchor link. No page reload needed.
+      -->
+      <ul>
+        <li><a href="#intro">Home</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--
+    Each major area is a <section> with an id.
+    The id lets CSS and anchor links target it specifically.
+  -->
+
+  <!-- ── INTRO / HERO ─────────────────────────────────────────── -->
+  <section id="intro">
+    <h1>Hi, I'm Madeline Snow</h1>
+    <p class="tagline">UX Design, Product Strategy, AI systems</p>
+    <a href="#work" class="btn">See my work</a>
+  </section>
+
+  <!-- ── WORK GRID ─────────────────────────────────────────────── -->
+  <section id="work">
+    <h2>Selected Work</h2>
+    <!--
+      The .work-grid div is a layout container — it doesn't mean anything
+      semantically, it's just a box we can target with CSS to arrange
+      the cards inside it into a grid.
+    -->
+    <div class="work-grid">
+
+      <div class="work-card">
+        <!-- .work-thumb is a placeholder for a project image -->
+        <div class="work-thumb"></div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project is and what your role was.</p>
+      </div>
+
+      <div class="work-card">
+        <div class="work-thumb"></div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project is and what your role was.</p>
+      </div>
+
+      <div class="work-card">
+        <div class="work-thumb"></div>
+        <h3>Project Title</h3>
+        <p>A short description of what this project is and what your role was.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ───────────────────────────────────────────────── -->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p>Open to new opportunities and collaborations.</p>
+    <!--
+      mailto: is a special link type that opens the visitor's email app.
+      Replace you@example.com with your actual address.
+    -->
+    <a href="mailto:mlsnow26@gmail.com" class="btn">Email Me</a>
+  </section>
+
+  <!--
+    <footer> is another semantic element for the bottom of the page.
+    &copy; is an HTML entity — a way to write special characters like ©
+  -->
+  <footer>
+    <p>&copy; 2026 Madeline Snow</p>
+  </footer>
+
+</body>
+</html>
