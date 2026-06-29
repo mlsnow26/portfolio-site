@@ -187,9 +187,11 @@ p  { color: var(--color-muted); max-width: 60ch; } /* ch = width of one characte
 }
 
 .work-thumb {
-  /* placeholder for a project image — swap background-color for background-image later */
+  display: block;
+  width: 100%;
   height: 200px;
-  background-color: var(--color-border);
+  object-fit: cover; /* crops the image to fill the space without stretching */
+  background-color: var(--color-border); /* shows while image loads */
 }
 
 .work-card h3,
