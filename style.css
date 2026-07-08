@@ -1,19 +1,17 @@
-/* ── DESIGN TOKENS ──────────────────────────────────────────────────────────
-   CSS custom properties (also called variables) let you define values once
-   and reuse them everywhere. As a designer, think of these as your style guide
-   living in the code — change a color here and it updates across the whole site.
-   They always start with --, and you access them with var(--name).
-   ───────────────────────────────────────────────────────────────────────── */
+/* ── DESIGN TOKENS ────────────────────────────────────────────────────────── */
 :root {
   --color-bg:        #f9f8f6;
   --color-surface:   #ffffff;
   --color-text:      #1a1a1a;
   --color-muted:     #6b7280;
-  --color-accent:    #2563eb;
+  --color-accent:    #7138C8;
+  --color-accent-2:  #C4256E;
+  --color-accent-3:  #E87B77;
+  --color-accent-4:  #F5C280;
   --color-border:    #e5e7eb;
 
   --font-body:       'Momo Trust Sans', sans-serif;
-  --font-ui:         'Momo Trust Display', sans-serif;
+  --font-display:    'Momo Trust Display', sans-serif;
 
   --space-sm:        0.75rem;
   --space-md:        1.5rem;
@@ -21,53 +19,35 @@
   --space-xl:        6rem;
 
   --max-width:       1100px;
-  --radius:          8px;
+  --radius:          12px;
 }
 
-/* ── RESET ──────────────────────────────────────────────────────────────────
-   Browsers have their own default styles (margins, padding, font sizes) that
-   differ slightly between Chrome, Firefox, Safari, etc. This reset zeroes them
-   out so we start from a clean, consistent baseline.
-   ───────────────────────────────────────────────────────────────────────── */
+/* ── RESET ───────────────────────────────────────────────────────────────── */
 *, *::before, *::after {
-  box-sizing: border-box; /* padding/border are included in an element's width */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ── BASE ────────────────────────────────────────────────────────────────────
-   Styles on html/body apply to the entire page unless overridden lower down.
-   ───────────────────────────────────────────────────────────────────────── */
+/* ── BASE ────────────────────────────────────────────────────────────────── */
 html {
-  scroll-behavior: smooth; /* makes anchor links (#work) animate instead of jump */
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  font-size: 1rem;       /* 1rem = 16px by default (the browser's base size) */
+  font-size: 1rem;
   line-height: 1.6;
 }
 
-/* ── LAYOUT UTILITY ─────────────────────────────────────────────────────────
-   A reusable "container" class that centers content and limits its width.
-   Most sections will wrap their content in one of these.
-   ───────────────────────────────────────────────────────────────────────── */
-.container {
-  max-width: var(--max-width);
-  margin-inline: auto;   /* margin-inline is shorthand for margin-left + margin-right */
-  padding-inline: var(--space-md);
-}
-
-/* ── HEADER / NAV ───────────────────────────────────────────────────────────
-   The navigation bar sticks to the top as you scroll (position: sticky).
-   ───────────────────────────────────────────────────────────────────────── */
+/* ── HEADER / NAV ────────────────────────────────────────────────────────── */
 header {
   position: sticky;
   top: 0;
-  z-index: 100;          /* stacks above other content so it doesn't get covered */
-  background-color: var(--color-surface);
+  z-index: 100;
+  background-color: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -75,172 +55,397 @@ nav {
   max-width: var(--max-width);
   margin-inline: auto;
   padding: var(--space-sm) var(--space-md);
-  display: flex;                    /* flexbox: puts children in a row by default */
-  justify-content: space-between;   /* pushes logo left, links right */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-family: var(--font-ui);
+a.logo {
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.1rem;
-  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
 }
 
 nav ul {
-  list-style: none;      /* removes the bullet points */
+  list-style: none;
   display: flex;
-  gap: var(--space-md);  /* gap adds space between flex children */
+  gap: var(--space-md);
 }
 
 nav a {
-  font-family: var(--font-ui);
+  font-family: var(--font-body);
   font-size: 0.9rem;
   color: var(--color-muted);
   text-decoration: none;
-  transition: color 0.2s; /* animates the color change on hover */
+  transition: color 0.2s;
 }
 
 nav a:hover {
   color: var(--color-text);
 }
 
-/* ── SECTIONS (shared) ───────────────────────────────────────────────────────
-   Rules that apply to every <section> so they all have consistent spacing.
-   ───────────────────────────────────────────────────────────────────────── */
-section {
-  padding-block: var(--space-xl); /* padding-block = padding-top + padding-bottom */
+/* ── BUTTONS ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.btn-filled {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+}
+
+.btn:hover {
+  opacity: 0.75;
+}
+
+/* ── HOMEPAGE: HERO ──────────────────────────────────────────────────────── */
+#intro {
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+/* ── GRADIENT BLOBS ──────────────────────────────────────────────────────── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  /* Peach — top right */
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(245, 194, 128, 0.55) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+}
+
+.blob-2 {
+  /* Coral — bottom right */
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(232, 123, 119, 0.45) 0%, transparent 70%);
+  bottom: -80px;
+  right: 80px;
+}
+
+.blob-3 {
+  /* Purple — top left, very subtle */
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(113, 56, 200, 0.12) 0%, transparent 70%);
+  top: -100px;
+  left: -150px;
+}
+
+/* ── HOMEPAGE: FOOTER SECTION ────────────────────────────────────────────── */
+#contact {
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: var(--space-md);
+  padding: var(--space-xl) var(--space-md);
 }
 
-h1, h2, h3 {
-  font-family: var(--font-ui);
-  line-height: 1.2;
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); } /* clamp(min, preferred, max) — scales with viewport */
-h2 { font-size: 1.75rem; margin-bottom: var(--space-md); }
-h3 { font-size: 1.1rem; margin-bottom: var(--space-sm); }
+.site-footer-bio h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
 
-p  { color: var(--color-muted); max-width: 60ch; } /* ch = width of one character — limits line length for readability */
+.site-footer-bio p {
+  color: var(--color-muted);
+  max-width: 50ch;
+  margin-bottom: var(--space-sm);
+}
 
-/* ── INTRO SECTION ───────────────────────────────────────────────────────── */
-#intro {
-  min-height: 70vh;      /* vh = viewport height — this section is at least 70% of the screen tall */
+.site-footer-contact {
+  text-align: right;
+}
+
+.site-footer-contact h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.site-footer-contact ul {
+  list-style: none;
   display: flex;
-  flex-direction: column;  /* stack children vertically */
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.site-footer-contact a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.site-footer-contact a:hover {
+  color: var(--color-text);
+}
+
+/* ── WORK PAGE ───────────────────────────────────────────────────────────── */
+.work-page {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+}
+
+.work-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-lg);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.case-card {
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+
+.case-card:hover .case-img {
+  opacity: 0.88;
+  transform: scale(1.01);
+}
+
+.case-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--space-sm);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.case-img-placeholder {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  margin-bottom: var(--space-sm);
+}
+
+.case-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.case-meta {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+/* ── CASE STUDY PAGE ─────────────────────────────────────────────────────── */
+.case-study {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.cs-hero {
+  margin-bottom: var(--space-lg);
+}
+
+.cs-eyebrow {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.case-study h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.cs-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+  margin-bottom: var(--space-xl);
+}
+
+.cs-intro-image img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.cs-role {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.cs-intro-meta p {
+  color: var(--color-muted);
+}
+
+.cs-section {
+  max-width: 72ch;
+  margin-bottom: var(--space-xl);
+}
+
+.cs-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.cs-section p {
+  color: var(--color-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.cs-section ul {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cs-section li {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.cs-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.cs-image-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ── CASE STUDY FOOTER ───────────────────────────────────────────────────── */
+.cs-footer {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.cs-footer h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.cs-footer ul {
+  list-style: none;
+  display: flex;
   justify-content: center;
   gap: var(--space-md);
 }
 
-.tagline {
-  font-size: 1.25rem;
-}
-
-/* ── BIO SECTION ─────────────────────────────────────────────────────────── */
-#about {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding-block: var(--space-lg);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-#about p {
-  font-size: 1.15rem;
-  color: var(--color-text);
-  max-width: 65ch;
-}
-
-/* ── BUTTON ──────────────────────────────────────────────────────────────────
-   The .btn class turns an <a> link into a styled button.
-   ───────────────────────────────────────────────────────────────────────── */
-.btn {
-  display: inline-block;           /* makes padding work correctly on a link */
-  padding: 0.75rem 1.5rem;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  font-family: var(--font-ui);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: var(--radius);
-  transition: opacity 0.2s;
-  align-self: flex-start;          /* prevents button from stretching full width */
-}
-
-.btn:hover {
-  opacity: 0.85;
-}
-
-/* ── WORK GRID ───────────────────────────────────────────────────────────────
-   CSS Grid is the best tool for laying out cards.
-   repeat(auto-fill, minmax(300px, 1fr)) means:
-   "create as many columns as fit, each at least 300px wide, sharing remaining space equally."
-   This makes the grid automatically responsive — no media queries needed for this part.
-   ───────────────────────────────────────────────────────────────────────── */
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-}
-
-.work-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  overflow: hidden;       /* clips the thumbnail image to the card's rounded corners */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.work-card:hover {
-  transform: translateY(-4px);   /* nudges the card up on hover */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.work-thumb {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover; /* crops the image to fill the space without stretching */
-  background-color: var(--color-border); /* shows while image loads */
-}
-
-.work-card h3,
-.work-card p {
-  padding: var(--space-sm) var(--space-md);
-}
-
-.work-card p {
-  padding-bottom: var(--space-md);
-}
-
-/* ── CONTACT SECTION ─────────────────────────────────────────────────────── */
-#contact {
-  text-align: center;
-  background-color: var(--color-surface);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  max-width: var(--max-width);  /* override the section default to add bg color edge-to-edge of container */
-}
-
-#contact p {
-  text-align: center;
-}
-
-/* ── FOOTER ──────────────────────────────────────────────────────────────── */
-footer {
-  text-align: center;
-  padding: var(--space-lg) var(--space-md);
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
+.cs-footer a {
   color: var(--color-muted);
-  border-top: 1px solid var(--color-border);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.cs-footer a:hover {
+  color: var(--color-text);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .site-footer-grid,
+  .case-grid,
+  .cs-intro,
+  .cs-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer-contact {
+    text-align: left;
+  }
+
+  .cs-footer ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

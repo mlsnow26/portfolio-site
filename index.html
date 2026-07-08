@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    The <head> is invisible to visitors — it's metadata the browser needs.
-    charset: tells the browser to use UTF-8 (supports most characters/emoji).
-    viewport: makes the page scale correctly on phones.
-    title: the tab label in the browser.
-    link: loads your stylesheet.
-  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madeline Snow — Portfolio</title>
+  <title>Madeline Snow — UX Designer & Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Momo+Trust+Sans:wght@200..800&family=Special+Gothic+Condensed+One&family=Special+Gothic+Expanded+One&family=Special+Gothic:wght@400..700&display=swap" rel="stylesheet">
@@ -18,95 +11,49 @@
 </head>
 <body>
 
-  <!--
-    <header> is a semantic element — it tells the browser (and screen readers)
-    "this is the top-of-page navigation area." Using the right element for the
-    right job is called semantic HTML, and it's good for accessibility + SEO.
-  -->
   <header>
     <nav>
-      <span class="logo">Madeline Snow</span>
-      <!--
-        These links use "#intro", "#work", "#contact" — the # means
-        "jump to the element on this page with that id." It's called an
-        anchor link. No page reload needed.
-      -->
+      <a href="index.html" class="logo">madeline s.</a>
       <ul>
-        <li><a href="#intro">Home</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="work.html">work</a></li>
+        <li><a href="#contact">get in touch</a></li>
       </ul>
     </nav>
   </header>
 
-  <!--
-    Each major area is a <section> with an id.
-    The id lets CSS and anchor links target it specifically.
-  -->
-
-  <!-- ── INTRO / HERO ─────────────────────────────────────────── -->
   <section id="intro">
-    <h1>Hi, I'm Madeline Snow</h1>
-    <p class="tagline">UX Design, Product Strategy, AI systems</p>
-    <a href="#work" class="btn">See my work</a>
-  </section>
-
-  <!-- ── BIO ──────────────────────────────────────────────────── -->
-  <section id="about">
-    <p>I'm a UX strategist and content designer who works across the full system: product strategy, information architecture, design systems, and the words that tie it all together.</p>
-    <p>I'm based in Melbourne and have just spent nine years in the Bay Area shaping products used by over a billion people.</p>
-    <p>I have a lot to say about UX strategy, responsible design, emerging AI and how to design for humans.</p>
-  </section>
-
-  <!-- ── WORK GRID ─────────────────────────────────────────────── -->
-  <section id="work">
-    <h2>Selected Work</h2>
-    <!--
-      The .work-grid div is a layout container — it doesn't mean anything
-      semantically, it's just a box we can target with CSS to arrange
-      the cards inside it into a grid.
-    -->
-    <div class="work-grid">
-
-      <div class="work-card">
-        <img src="images/meta-cc-mocks2.webp" alt="UX Design at Meta — Messenger and Facebook product mocks" class="work-thumb">
-        <h3>UX Design at Meta</h3>
-        <p>I led content design for Messenger communities, inbox, and notes. Then early in 2025, I jumped to Facebook to focus on 'OG Facebook' via Friends Tab and profile redesign. I found my sweet spot in early-stage projects where user needs drive the best decisions.</p>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-content">
+      <p class="eyebrow">hey there,</p>
+      <h1>i'm madeline,<br>a content designer<br>&amp; ux strategist.</h1>
+      <div class="hero-actions">
+        <a href="work.html" class="btn btn-filled">see my work</a>
+        <a href="#contact" class="btn btn-outline">read my story</a>
+        <a href="surprise.html" class="btn btn-outline">surprise?</a>
       </div>
-
-      <div class="work-card">
-        <img src="images/hintwater-01.webp" alt="Brand at Hint Water — campaign and book launch imagery" class="work-thumb">
-        <h3>Brand at Hint Water</h3>
-        <p>For two years I was the lead copywriter for Hint's online and offline brand campaigns, including a 2020 Super Bowl ad and a NYT best-selling book launch.</p>
-      </div>
-
-      <div class="work-card">
-        <img src="images/redbubble-cah.webp" alt="Marketing at Redbubble — social media and content marketing" class="work-thumb">
-        <h3>Marketing at Redbubble</h3>
-        <p>I ran the social media and content marketing channels for Redbubble, educating artists about our platform and inspiring customers to support the art they loved.</p>
-      </div>
-
     </div>
   </section>
 
-  <!-- ── CONTACT ───────────────────────────────────────────────── -->
   <section id="contact">
-    <h2>Get in Touch</h2>
-    <p>Open to new opportunities and collaborations.</p>
-    <!--
-      mailto: is a special link type that opens the visitor's email app.
-      Replace you@example.com with your actual address.
-    -->
-    <a href="mailto:mlsnow26@gmail.com" class="btn">Email Me</a>
+    <div class="site-footer-grid">
+      <div class="site-footer-bio">
+        <h2>hello,</h2>
+        <p>i'm a UX strategist and content designer who works across the full system: product strategy, information architecture, design systems, and the words that tie it all together.</p>
+        <p>I'm based in Melbourne and have just spent nine years in the Bay Area shaping products used by over a billion people.</p>
+        <p>I have a lot to say about UX strategy, responsible design, emerging AI and how to design for humans.</p>
+      </div>
+      <div class="site-footer-contact">
+        <h2>let's work together</h2>
+        <ul>
+          <li><a href="mailto:mlsnow26@gmail.com">Email</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Linkedin</a></li>
+        </ul>
+      </div>
+    </div>
   </section>
-
-  <!--
-    <footer> is another semantic element for the bottom of the page.
-    &copy; is an HTML entity — a way to write special characters like ©
-  -->
-  <footer>
-    <p>&copy; 2026 Madeline Snow</p>
-  </footer>
 
 </body>
 </html>
