@@ -310,53 +310,53 @@ nav a:hover {
 
 /* ── CASE STUDY PAGE ─────────────────────────────────────────────────────── */
 
-/* hero */
-.case-study {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding: var(--space-xl) var(--space-md);
+/* hero — white, generous padding */
+.cs-hero-wrapper {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cs-hero {
-  margin-bottom: var(--space-lg);
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md);
+  padding-top: calc(var(--space-xl) * 1.5);
+  padding-bottom: calc(var(--space-xl) * 1.5);
 }
 
 .cs-eyebrow {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--color-muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-md);
 }
 
-.case-study h1 {
+.cs-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.75rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  margin-bottom: var(--space-lg);
 }
 
-.cs-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  align-items: start;
-  margin-bottom: var(--space-xl);
-}
-
-.cs-intro-image img {
-  width: 100%;
-  border-radius: var(--radius);
-}
-
-.cs-role {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: var(--space-sm);
-  color: var(--color-text);
-}
-
-.cs-intro-meta p {
+.cs-tldr {
   color: var(--color-muted);
+  font-size: 1rem;
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+/* content body — dotted background, full width */
+.cs-body-wrapper {
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle, #c2c7d0 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.cs-body {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md);
 }
 
 .cs-section {
@@ -369,6 +369,8 @@ nav a:hover {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: var(--space-md);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .cs-section p {
@@ -508,7 +510,7 @@ nav a:hover {
 }
 
 .cs-stat {
-  background: rgba(113, 56, 200, 0.07);
+  background: var(--color-surface);
   border-radius: var(--radius);
   padding: var(--space-md);
 }
