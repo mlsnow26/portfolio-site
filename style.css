@@ -360,7 +360,7 @@ nav a:hover {
 /* content body — dotted background, narrow column */
 .cs-body-wrapper {
   background-color: var(--color-bg);
-  background-image: radial-gradient(circle, #c2c7d0 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(194, 199, 208, 0.7) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
   padding-inline: var(--space-md);
 }
@@ -481,7 +481,7 @@ nav a:hover {
 
 .cs-sample--2 {
   padding: 12px 56px 48px;
-  min-height: 862px;
+  min-height: 780px;
   display: flex;
   flex-direction: column;
   justify-content: center;
