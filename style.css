@@ -407,8 +407,12 @@ nav a:hover {
 }
 
 /* brief callout */
+.cs-section:has(.cs-brief) {
+  margin-bottom: 0;
+}
+
 .cs-brief {
-  margin-top: var(--space-md);
+  margin: var(--space-lg) 0;
   padding: var(--space-lg) var(--space-lg);
   background: var(--cs-teal);
   border: 1px solid var(--color-text);
