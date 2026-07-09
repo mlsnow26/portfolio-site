@@ -144,7 +144,7 @@ nav a:hover {
 
 .hero-content h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.1rem, 5.1vw, 3.8rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -309,6 +309,8 @@ nav a:hover {
 }
 
 /* ── CASE STUDY PAGE ─────────────────────────────────────────────────────── */
+
+/* hero */
 .case-study {
   max-width: var(--max-width);
   margin-inline: auto;
@@ -400,34 +402,232 @@ nav a:hover {
   border-radius: var(--radius);
 }
 
+/* brief callout */
+.cs-brief {
+  margin-top: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(113, 56, 200, 0.07);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.cs-brief p {
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: none;
+}
+
+/* subsections (What I did) */
+.cs-subsections {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cs-subsection h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--color-text);
+}
+
+.cs-subsection p {
+  color: var(--color-muted);
+}
+
+/* sample cards */
+.cs-sample {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius) * 2);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.cs-sample-header {
+  margin-bottom: var(--space-md);
+}
+
+.sample-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.cs-sample h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--color-text);
+}
+
+.cs-sample p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.sample-images--grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.sample-images--phones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.cs-sample img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+/* stats */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.cs-stat {
+  background: rgba(113, 56, 200, 0.07);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  max-width: none;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  max-width: none;
+}
+
+/* final image */
+.cs-final-image {
+  margin-bottom: var(--space-xl);
+}
+
+.cs-final-image img {
+  width: 100%;
+  border-radius: calc(var(--radius) * 2);
+  object-fit: cover;
+  max-height: 500px;
+}
+
 /* ── CASE STUDY FOOTER ───────────────────────────────────────────────────── */
-.cs-footer {
-  text-align: center;
-  padding: var(--space-xl) var(--space-md);
+.cs-footer-full {
   border-top: 1px solid var(--color-border);
 }
 
-.cs-footer h2 {
+.cs-footer-nav {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-lg) var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-nav-prev,
+.cs-nav-next {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: opacity 0.2s;
+}
+
+.cs-nav-next {
+  justify-content: flex-end;
+}
+
+.cs-nav-prev:hover,
+.cs-nav-next:hover {
+  opacity: 0.65;
+}
+
+.cs-nav-prev img,
+.cs-nav-next img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.cs-nav-text--right {
+  text-align: right;
+}
+
+.cs-nav-label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+.cs-nav-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.cs-nav-meta {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 0.15rem;
+}
+
+.cs-get-in-touch {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.cs-get-in-touch h2 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   margin-bottom: var(--space-md);
 }
 
-.cs-footer ul {
+.cs-get-in-touch ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: var(--space-md);
 }
 
-.cs-footer a {
+.cs-get-in-touch a {
   color: var(--color-muted);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
 
-.cs-footer a:hover {
+.cs-get-in-touch a:hover {
   color: var(--color-text);
 }
 
@@ -436,7 +636,11 @@ nav a:hover {
   .site-footer-grid,
   .case-grid,
   .cs-intro,
-  .cs-image-grid {
+  .cs-image-grid,
+  .cs-stats,
+  .cs-footer-nav,
+  .sample-images--grid,
+  .sample-images--phones {
     grid-template-columns: 1fr;
   }
 
@@ -444,8 +648,17 @@ nav a:hover {
     text-align: left;
   }
 
-  .cs-footer ul {
+  .cs-get-in-touch ul {
     flex-direction: column;
     gap: 0.5rem;
+    align-items: center;
+  }
+
+  .cs-nav-next {
+    justify-content: flex-start;
+  }
+
+  .cs-nav-text--right {
+    text-align: left;
   }
 }
