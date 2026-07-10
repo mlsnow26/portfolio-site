@@ -520,6 +520,23 @@ nav a:hover {
   justify-content: center;
 }
 
+.cs-sample--side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.cs-sample--side .cs-sample-header {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.cs-sample--side .sample-images--phones {
+  flex-shrink: 0;
+  width: auto;
+}
+
 .cs-sample-header {
   margin-bottom: var(--space-md);
 }
@@ -566,6 +583,17 @@ nav a:hover {
   text-align: center;
 }
 
+.sample-caption a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.sample-caption a:hover {
+  color: var(--cs-teal-dark);
+}
+
 .sample-images--phones {
   display: flex;
   justify-content: center;
@@ -581,6 +609,26 @@ nav a:hover {
   border: 1px solid var(--color-text);
   border-radius: 26px;
   object-fit: cover;
+}
+
+.sample-images--wide-half {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.sample-images--wide-half img {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cs-sample--side .sample-images--wide-half {
+  flex-shrink: 0;
+  width: auto;
 }
 
 /* stats */
@@ -630,6 +678,89 @@ nav a:hover {
   border-radius: 24px;
   object-fit: cover;
   max-height: 500px;
+}
+
+/* ── MY STORY PAGE ───────────────────────────────────────────────────────── */
+.story-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cs-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.story-fig {
+  margin-top: var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  border-radius: 24px;
+  padding: var(--space-lg);
+}
+
+.story-fig-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.story-fig-def {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--cs-muted);
+  margin-bottom: var(--space-md);
+}
+
+.story-fig-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--cs-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.story-fig-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.story-legend-swatch {
+  width: 14px;
+  height: 3px;
+  border-radius: 1px;
+}
+
+.story-legend-swatch--solid {
+  background: var(--cs-teal-dark);
+}
+
+.story-legend-swatch--dashed {
+  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0 4px, transparent 4px 7px);
+}
+
+.story-chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+.story-fig figcaption {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--cs-muted);
+  margin-top: var(--space-sm);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .story-chart-wrap {
+    height: 220px;
+  }
 }
 
 /* ── CASE STUDY FOOTER ───────────────────────────────────────────────────── */
@@ -734,6 +865,10 @@ nav a:hover {
 
   .cs-sample--2 {
     min-height: 0;
+  }
+
+  .cs-sample--side {
+    flex-direction: column;
   }
 
   .sample-images--phones {
