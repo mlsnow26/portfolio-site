@@ -154,6 +154,34 @@ nav a:hover {
   color: var(--color-text);
 }
 
+.hero-line {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  animation: word-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -395,7 +423,8 @@ nav a:hover {
 }
 
 .cs-section ul {
-  padding-left: 1.25rem;
+  list-style: none;
+  padding-left: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -535,6 +564,14 @@ nav a:hover {
   width: 100%;
   border-radius: var(--radius);
   object-fit: cover;
+}
+
+.sample-caption {
+  margin-top: var(--space-sm);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--cs-muted);
+  text-align: center;
 }
 
 .sample-images--phones {
