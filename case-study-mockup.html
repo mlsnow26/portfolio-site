@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a brand new messaging paradigm — Madeline Snow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* spacing scale */
+    --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 104px;
+    /* palette */
+    --paper: #FBF8F3;
+    --ink: #211D18;
+    --ink-soft: #5C554B;
+    --rule: #E4DDD1;
+    --accent: #4B44C7;      /* this study's accent — iris */
+    --accent-wash: #EFEEFB;
+    /* type */
+    --display: "Fraunces", serif;
+    --body: "Instrument Sans", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .page { max-width: 680px; margin: 0 auto; padding: 0 var(--s3); }
+
+  /* top nav */
+  nav {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: var(--s3) 0; border-bottom: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 13px;
+  }
+  nav a { color: var(--ink-soft); text-decoration: none; }
+  nav a:hover, nav a:focus-visible { color: var(--accent); }
+  nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  nav .wordmark { color: var(--ink); font-weight: 500; }
+
+  /* hero */
+  header.hero { padding: var(--s6) 0 var(--s5); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em;
+    color: var(--accent); margin-bottom: var(--s3);
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 600; line-height: 1.06;
+    letter-spacing: -0.015em;
+    max-width: 12ch;
+    margin-bottom: var(--s4);
+  }
+  .tldr {
+    font-size: 20px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 34ch0; 
+  }
+  .tldr strong { color: var(--ink); font-weight: 600; }
+
+  /* sections */
+  section { padding: var(--s5) 0 0; }
+  h2 {
+    font-family: var(--display); font-weight: 600;
+    font-size: 28px; line-height: 1.2;
+    margin-bottom: var(--s3);
+    display: inline-block; position: relative;
+  }
+  /* hand-drawn underline — placeholder for real hand-lettering */
+  h2 .scrawl {
+    position: absolute; left: -2px; right: -6px; bottom: -7px; height: 9px;
+  }
+  h2 .scrawl path { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  p + p { margin-top: var(--s2); }
+
+  /* the brief callout */
+  .brief {
+    margin: var(--s4) 0 0;
+    padding: var(--s3) var(--s3);
+    background: var(--accent-wash);
+    border-left: 3px solid var(--accent);
+    font-size: 18px;
+  }
+  .brief .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: var(--s1); }
+
+  /* what i did list */
+  .did { list-style: none; margin-top: var(--s2); }
+  .did li {
+    padding: var(--s3) 0; border-top: 1px solid var(--rule);
+  }
+  .did li:last-child { border-bottom: 1px solid var(--rule); }
+  .did .label {
+    font-weight: 600; color: var(--ink);
+    display: block; margin-bottom: 2px;
+  }
+  .did p { color: var(--ink-soft); font-size: 16px; }
+
+  /* IA diagram */
+  figure.diagram { margin: var(--s4) 0 0; padding: var(--s4); background: #FFFEFB; border: 1px solid var(--rule); border-radius: 4px; }
+  figure.diagram svg { width: 100%; height: auto; display: block; }
+  figcaption { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); margin-top: var(--s2); }
+
+  /* stat row — the signature */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--s3); margin-top: var(--s4);
+  }
+  .stat .num {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(40px, 7vw, 56px); line-height: 1;
+    color: var(--accent); letter-spacing: -0.02em;
+    font-variant-numeric: lining-nums;
+  }
+  .stat .what {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.5;
+    color: var(--ink-soft); margin-top: var(--s1); letter-spacing: 0.01em;
+  }
+  .milestones { margin-top: var(--s4); list-style: none; }
+  .milestones li { display: flex; gap: var(--s2); padding: var(--s2) 0; border-top: 1px solid var(--rule); font-size: 16px; color: var(--ink-soft); }
+  .milestones .year { font-family: var(--mono); font-size: 13px; color: var(--ink); flex: 0 0 4ch; padding-top: 3px; }
+  .milestones a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  /* pull quote */
+  .pull {
+    margin: var(--s6) 0;
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: clamp(26px, 4.5vw, 36px); line-height: 1.3;
+    color: var(--ink); text-align: center;
+    padding: 0 var(--s2);
+  }
+  .pull .mark { color: var(--accent); font-style: normal; }
+
+  /* learned */
+  .learned { color: var(--ink); }
+
+  /* footer nav between studies */
+  footer {
+    margin-top: var(--s6); padding: var(--s4) 0 var(--s5);
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 13px;
+  }
+  footer a { color: var(--ink-soft); text-decoration: none; max-width: 26ch; }
+  footer a:hover, footer a:focus-visible { color: var(--accent); }
+  footer a .dir { color: var(--accent); display: block; margin-bottom: 4px; }
+  footer a:last-child { text-align: right; }
+
+  @media (max-width: 560px) {
+    .stats { grid-template-columns: 1fr; gap: var(--s4); }
+    body { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav>
+    <a class="wordmark" href="#">madeline snow</a>
+    <a href="#">← all work</a>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">Messenger · 2021–2024 · Lead Content Designer</p>
+    <h1>Building a brand new messaging paradigm</h1>
+    <p class="tldr"><strong>0→1 content design for Messenger Communities</strong> — a net-new public messaging surface inside a private messaging app. From internal dogfooding to a global launch announced by Mark Zuckerberg.</p>
+  </header>
+
+  <section>
+    <h2>The problem
+      <svg class="scrawl" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C 40 2, 80 9, 120 5 S 180 3, 198 6"/></svg>
+    </h2>
+    <p>The way people connected online was changing. We saw large communities forming around niche interests, with a demand for instant messaging as a way to connect (think Discord, Telegram). However, Messenger was built for private chats between people who already knew each other. There was no way to message a loosely-connected community at scale.</p>
+    <p>Key challenges: Public messaging breaks the mental model users hold about a private app, like who can see this and who can find me. We were also designing open messaging while Messenger sprinted toward end-to-end encryption for everyone. And Communities had to connect back to Facebook Groups: two design systems with one experience.</p>
+    <div class="brief">
+      <span class="label">The brief</span>
+      Build a public messaging surface from scratch, inside an app a billion people already had muscle memory for.
+    </div>
+  </section>
+
+  <section>
+    <h2>What I did
+      <svg class="scrawl" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 C 50 8, 90 2, 140 6 S 185 8, 198 4"/></svg>
+    </h2>
+    <p>I was one of three content designers on Communities, and a lead for most of this time. The work spanned across:</p>
+    <ul class="did">
+      <li><span class="label">Naming</span><p>Partnered with UX and market research to define the product and feature names: community chats, broadcast chats, sidechats.</p></li>
+      <li><span class="label">Information architecture</span><p>How communities, channels, and chats related, how that structure read to someone who'd only ever messaged one-to-one, and how it tied to Facebook Groups.</p></li>
+      <li><span class="label">Voice, tone, and content standards</span><p>Ran extensive content tests to learn which value props resonated, then scaled those learnings into the standards the product grew on.</p></li>
+      <li><span class="label">EU regulatory language</span><p>The compliant flows and disclosures that unlocked launch in Europe.</p></li>
+      <li><span class="label">Onboarding and activation</span><p>Helping people understand, join, and participate once the product existed.</p></li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 560 190" role="img" aria-label="Information architecture: a community contains broadcast chats, community chats, and sidechats">
+        <g font-family="IBM Plex Mono, monospace" font-size="13">
+          <rect x="200" y="12" width="160" height="40" rx="4" fill="#EFEEFB" stroke="#4B44C7" stroke-width="1.5"/>
+          <text x="280" y="37" text-anchor="middle" fill="#211D18">community</text>
+          <path d="M280 52 L280 78 M120 78 L440 78 M120 78 L120 104 M280 78 L280 104 M440 78 L440 104" stroke="#B9B2A4" stroke-width="1.5" fill="none"/>
+          <rect x="35" y="104" width="170" height="40" rx="4" fill="#FFFEFB" stroke="#B9B2A4" stroke-width="1.5"/>
+          <text x="120" y="129" text-anchor="middle" fill="#5C554B">broadcast chats</text>
+          <rect x="195" y="104" width="170" height="40" rx="4" fill="#FFFEFB" stroke="#B9B2A4" stroke-width="1.5"/>
+          <text x="280" y="129" text-anchor="middle" fill="#5C554B">community chats</text>
+          <rect x="355" y="104" width="170" height="40" rx="4" fill="#FFFEFB" stroke="#B9B2A4" stroke-width="1.5"/>
+          <text x="440" y="129" text-anchor="middle" fill="#5C554B">sidechats</text>
+          <path d="M280 144 L280 166" stroke="#B9B2A4" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text x="280" y="182" text-anchor="middle" fill="#5C554B" font-size="12">↔ facebook groups</text>
+        </g>
+      </svg>
+      <figcaption>The structure, abstracted — recreated, since the real artifacts stay at Meta.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>….and then what happened?
+      <svg class="scrawl" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C 30 3, 70 8, 110 4 S 170 7, 198 5"/></svg>
+    </h2>
+    <div class="stats">
+      <div class="stat"><div class="num">350M</div><div class="what">users on a surface that hadn't existed two years earlier</div></div>
+      <div class="stat"><div class="num">30%</div><div class="what">of all Messenger sends</div></div>
+      <div class="stat"><div class="num">5×</div><div class="what">improvement in top-of-funnel adoption from my onboarding work</div></div>
+    </div>
+    <ul class="milestones">
+      <li><span class="year">2022</span><span>Global launch, announced personally by <a href="#">Mark Zuckerberg</a>.</span></li>
+      <li><span class="year">2024</span><span>Communities graduated into a standalone product, covered by <a href="#">TechCrunch</a> and <a href="#">The Verge</a>. I led the upgrade pathing project to migrate legacy group chats into the new experience.</span></li>
+    </ul>
+  </section>
+
+  <blockquote class="pull">
+    <span class="mark">“</span>Mental models must be built in layers — naming, onboarding, repetition.<span class="mark">”</span>
+  </blockquote>
+
+  <section style="padding-top:0;">
+    <h2>What I learned
+      <svg class="scrawl" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 C 45 8, 95 3, 145 7 S 190 4, 198 6"/></svg>
+    </h2>
+    <p class="learned">Building a new paradigm taught me that mental models must be built in layers, across naming, onboarding, repetition, and crystal-clear content strategy. I also learned that the "MVP" can't stay minimal for long – once ours shipped, we couldn't design additional bells and whistles until the core experience was solid. Finally, I learned that simple is a discipline, not a style.</p>
+  </section>
+
+  <footer>
+    <a href="#"><span class="dir">← previous</span>Helping artists thrive on a global marketplace</a>
+    <a href="#"><span class="dir">next →</span>Writing rules for AI before there were any</a>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -65,8 +65,11 @@ a.logo {
   font-weight: 400;
   font-size: 2rem;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: var(--cs-pill);
   text-decoration: none;
+  -webkit-text-stroke: 2px var(--color-text);
+  paint-order: stroke fill;
+  text-shadow: -3.6px 3.6px 0 var(--color-text);
 }
 
 nav ul {
@@ -87,6 +90,39 @@ nav a {
 
 nav a:hover {
   color: var(--color-text);
+}
+
+/* active-page indicator — a yellow dot centered behind the current nav
+   item's text (or behind the logo, on the homepage) */
+nav a,
+.logo {
+  position: relative;
+  z-index: 1;
+}
+
+nav a::before,
+.logo::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  background: var(--cs-pill);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+  z-index: -1;
+}
+
+nav a.is-active::before,
+.logo.is-active::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.logo::before {
+  width: 38px;
+  height: 38px;
 }
 
 /* ── BUTTONS ─────────────────────────────────────────────────────────────── */
@@ -145,17 +181,43 @@ nav a:hover {
   color: var(--color-muted);
 }
 
+.hero-photo-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--color-text);
+}
+
+.hero-photo {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 .hero-content h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 5.1vw, 3.8rem);
+  font-size: clamp(1.6rem, 5.1vw, 3.3rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: var(--cs-pill);
+  -webkit-text-stroke: 2px var(--color-text);
+  paint-order: stroke fill;
+  text-shadow: -4.8px 4.8px 0 var(--color-text);
 }
 
 .hero-line {
   display: block;
+  margin-bottom: 10px;
+}
+
+.hero-line:last-child {
+  margin-bottom: 0;
 }
 
 .word {
@@ -231,6 +293,14 @@ nav a:hover {
   padding: var(--space-xl) var(--space-md);
 }
 
+#contact.contact-page {
+  padding-top: calc(var(--space-xl) * 1.5);
+  padding-bottom: calc(var(--space-xl) * 1.5);
+  min-height: calc(100vh - 89px);
+  display: flex;
+  align-items: center;
+}
+
 .site-footer-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -280,21 +350,30 @@ nav a:hover {
 
 /* ── WORK PAGE ───────────────────────────────────────────────────────────── */
 .work-page {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle, rgba(194, 199, 208, 0.7) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  padding: 7.5rem var(--space-md) 5rem;
 }
 
 .case-grid {
+  max-width: var(--max-width);
+  margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
 }
 
 .case-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   text-decoration: none;
   color: var(--color-text);
-  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-text);
+  border-radius: 24px;
+  padding: 1rem;
 }
 
 .case-card:hover .case-img {
@@ -307,15 +386,35 @@ nav a:hover {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: var(--radius);
-  margin-bottom: var(--space-sm);
+  border: 1px solid var(--color-text);
+  border-radius: 16px;
   transition: opacity 0.25s, transform 0.25s;
 }
 
 .case-img-placeholder {
   aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
-  margin-bottom: var(--space-sm);
+  border: 1px solid var(--color-text);
+  border-radius: 16px;
+}
+
+.case-img-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--color-text);
+  border-radius: 16px;
+}
+
+.case-img-frame .case-img {
+  border: none;
+  border-radius: 0;
+  transform: scale(1.1);
+  transform-origin: center;
+}
+
+.case-card:hover .case-img-frame .case-img {
+  transform: scale(1.111);
 }
 
 .case-card h3 {
