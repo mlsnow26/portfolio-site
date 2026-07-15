@@ -2202,6 +2202,12 @@ ul.cs-tldr li::before {
 }
 
 @media (max-width: 700px) {
+  .remix-hero {
+    padding-top: calc(var(--space-xl) / 2);
+    padding-bottom: calc(var(--space-xl) / 2);
+    gap: calc(3rem + 16px);
+  }
+
   .remix-photo-wrap {
     width: 260px;
     height: 260px;
