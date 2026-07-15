@@ -8,6 +8,18 @@
   updateHeaderShadow();
   window.addEventListener('scroll', updateHeaderShadow, { passive: true });
 
+  // ── Randomize hero blob starting position on each load ──
+  // Sets a random base offset (--rx/--ry) that the existing drift
+  // animation's transform builds on top of, so blobs still glide
+  // smoothly but start from a different spot every time.
+  var blobRange = 70; // max px offset from the blob's default spot
+  document.querySelectorAll('.blob').forEach(function (el) {
+    var rx = Math.random() * blobRange * 2 - blobRange;
+    var ry = Math.random() * blobRange * 2 - blobRange;
+    el.style.setProperty('--rx', rx + 'px');
+    el.style.setProperty('--ry', ry + 'px');
+  });
+
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced || !('IntersectionObserver' in window)) return;
 
