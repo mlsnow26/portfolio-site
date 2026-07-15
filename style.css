@@ -1527,13 +1527,27 @@ ul.cs-tldr li::before {
     grid-template-columns: 1fr;
   }
 
+  .cs-sample {
+    padding-inline: var(--space-md);
+  }
+
+  .cs-sample--1 {
+    padding-inline: var(--space-md);
+  }
+
   .cs-sample--2 {
     min-height: 0;
     padding-top: 4rem;
+    padding-inline: var(--space-md);
   }
 
   .cs-sample--side {
     flex-direction: column;
+  }
+
+  .cs-sample h3,
+  .cs-sample p {
+    line-height: 1.568;
   }
 
   .sample-images--phones {
@@ -1542,7 +1556,8 @@ ul.cs-tldr li::before {
   }
 
   .sample-images--phones img {
-    max-width: 260px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .cs-nav-next {
