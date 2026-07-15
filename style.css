@@ -1656,6 +1656,10 @@ ul.cs-tldr li::before {
   font-size: 1.9rem;
   font-weight: 400;
   letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-color: var(--cs-pill);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .cv-title {
@@ -1790,6 +1794,8 @@ ul.cs-tldr li::before {
   font-size: 0.75rem;
   color: var(--color-text);
   background: var(--cs-fill-yellow);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
   border: 1px solid var(--color-text);
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
@@ -1852,7 +1858,7 @@ ul.cs-tldr li::before {
   }
 
   .cv-header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
   }
 
   .cv-name {
@@ -1865,15 +1871,27 @@ ul.cs-tldr li::before {
   }
 
   .cv-section {
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .cv-section:has(.cv-skills) {
+    margin-bottom: calc(0.6rem + 5px);
+  }
+
+  .cv-section h2 {
+    margin-bottom: 0.5rem;
   }
 
   .cv-company {
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cv-company-header {
+    margin-bottom: 0.4rem;
   }
 
   .cv-role {
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.35rem;
   }
 
   .cv-role-title {
@@ -1890,9 +1908,13 @@ ul.cs-tldr li::before {
     line-height: 1.4;
   }
 
+  .cv-skills {
+    gap: 0.35rem;
+  }
+
   .cv-skill-pill {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.45rem;
   }
 
   @page {
