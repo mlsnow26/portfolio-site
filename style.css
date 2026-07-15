@@ -1844,6 +1844,15 @@ nav a.is-active::before,
   align-items: center;
   justify-content: center;
   gap: 3rem;
+  opacity: 0;
+  animation: cs-hero-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .remix-hero {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .remix-photo-wrap {
