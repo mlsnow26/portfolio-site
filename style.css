@@ -138,7 +138,7 @@ nav a.is-active::before,
 
 @media (max-width: 600px) {
   nav {
-    padding-inline: var(--space-sm);
+    padding-inline: calc(var(--space-sm) + 10px);
   }
 
   a.logo {
@@ -214,7 +214,8 @@ nav a.is-active::before,
 
 @media (max-width: 700px) {
   .hero-content {
-    padding-block: var(--space-lg);
+    padding-top: var(--space-lg);
+    padding-bottom: calc(var(--space-lg) / 2);
   }
 }
 
@@ -837,6 +838,29 @@ nav a.is-active::before,
   line-height: 1.5;
 }
 
+ul.cs-tldr {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+ul.cs-tldr li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+ul.cs-tldr li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cs-pill);
+}
+
 .cs-tldr a {
   color: var(--color-text);
   text-decoration: underline;
@@ -875,6 +899,10 @@ nav a.is-active::before,
 @media (max-width: 700px) {
   .cs-body-wrapper {
     padding-inline: var(--space-sm);
+  }
+
+  main.cs-body-wrapper {
+    padding-top: calc(var(--space-lg) / 2);
   }
 }
 
@@ -1568,9 +1596,9 @@ nav a.is-active::before,
 }
 
 .cv-print-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  display: block;
+  width: fit-content;
+  margin: 0 0 1.25rem auto;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.75rem;
@@ -1739,6 +1767,25 @@ nav a.is-active::before,
   border: 1px solid var(--color-text);
   border-radius: 999px;
   padding: 0.25rem 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .cv-wrapper {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .cv-sheet {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cv-contact {
+    text-align: left;
+  }
 }
 
 @media (max-width: 600px) {
