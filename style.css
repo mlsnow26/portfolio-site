@@ -138,7 +138,7 @@ nav a.is-active::before,
 
 @media (max-width: 600px) {
   header {
-    height: calc(var(--space-xl) - 56px);
+    height: calc(var(--space-xl) - 48px);
   }
 
   nav {
@@ -199,6 +199,7 @@ nav a.is-active::before,
 @media (max-width: 700px) {
   #intro {
     min-height: auto;
+    padding-bottom: 48px;
   }
 }
 
