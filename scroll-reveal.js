@@ -23,6 +23,16 @@
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced || !('IntersectionObserver' in window)) return;
 
+  // ── Reveal the homepage "hey" section immediately on mobile ──
+  // On small viewports it sits close enough to the fold that waiting on a
+  // scroll-triggered intersection makes the page look empty below the hero.
+  if (window.matchMedia('(max-width: 700px)').matches) {
+    var mobileHelloSection = document.querySelector('.hello-section');
+    if (mobileHelloSection) {
+      mobileHelloSection.classList.add('reveal', 'is-visible');
+    }
+  }
+
   // ── Fade-up reveal for major content blocks ──
   // .cs-hero is excluded: it sits above the fold, so a scroll-triggered
   // reveal fires instantly on load and is imperceptible. It gets its own
