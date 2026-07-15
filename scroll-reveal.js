@@ -23,13 +23,22 @@
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced || !('IntersectionObserver' in window)) return;
 
-  // ── Reveal the homepage "hey" section immediately on mobile ──
+  // ── Reveal the homepage "hey" section once the hero banner has loaded, on mobile ──
   // On small viewports it sits close enough to the fold that waiting on a
   // scroll-triggered intersection makes the page look empty below the hero.
+  // Tied to the hero photo's load event rather than scroll position.
   if (window.matchMedia('(max-width: 700px)').matches) {
     var mobileHelloSection = document.querySelector('.hello-section');
+    var heroPhoto = document.querySelector('.hero-photo');
     if (mobileHelloSection) {
-      mobileHelloSection.classList.add('reveal', 'is-visible');
+      var revealMobileHello = function () {
+        mobileHelloSection.classList.add('reveal', 'is-visible');
+      };
+      if (heroPhoto && !heroPhoto.complete) {
+        heroPhoto.addEventListener('load', revealMobileHello, { once: true });
+      } else {
+        revealMobileHello();
+      }
     }
   }
 
