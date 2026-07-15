@@ -25,7 +25,7 @@
 
   // ── Fade-up reveal for major content blocks ──
   var revealTargets = document.querySelectorAll(
-    '.cs-section, .hello-section, .cs-sample, .remix-item, .cv-section'
+    '.cs-hero, .cs-section, .hello-section, .cs-sample, .remix-item, .cv-section'
   );
   revealTargets.forEach(function (el) {
     el.classList.add('reveal');
