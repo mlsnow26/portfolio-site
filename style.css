@@ -137,6 +137,10 @@ nav a.is-active::before,
 }
 
 @media (max-width: 600px) {
+  header {
+    height: calc(var(--space-xl) - 32px);
+  }
+
   nav {
     padding-inline: calc(var(--space-sm) + 10px);
   }
