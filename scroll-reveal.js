@@ -24,8 +24,11 @@
   if (prefersReduced || !('IntersectionObserver' in window)) return;
 
   // ── Fade-up reveal for major content blocks ──
+  // .cs-hero is excluded: it sits above the fold, so a scroll-triggered
+  // reveal fires instantly on load and is imperceptible. It gets its own
+  // CSS on-load animation instead (see .cs-hero in style.css).
   var revealTargets = document.querySelectorAll(
-    '.cs-hero, .cs-section, .hello-section, .cs-sample, .remix-item, .cv-section'
+    '.cs-section, .hello-section, .cs-sample, .remix-item, .cv-section'
   );
   revealTargets.forEach(function (el) {
     el.classList.add('reveal');
