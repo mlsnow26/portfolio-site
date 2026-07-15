@@ -36,7 +36,7 @@
     </div>
     <div class="remix-hero-text">
       <h1>Hey there :)</h1>
-      <p>See what I got up to across nine years, two continents, a thousand meetings and one pandemic.</p>
+      <p>In 2017 I left Melbourne for San Francisco. Nine years, a thousand meetings and one pandemic later, I&rsquo;m home. Here&rsquo;s what happened in between.</p>
     </div>
   </section>
 
@@ -135,14 +135,14 @@
 
     <div class="remix-item" data-year="facebook">
       <button class="remix-item-header">
-        <span class="remix-item-title">Back to the OG</span>
+        <span class="remix-item-title">Low key Facebook</span>
         <span class="remix-item-meta">Facebook · 2025</span>
         <span class="remix-item-icon" aria-hidden="true">+</span>
       </button>
       <div class="remix-item-panel">
         <div class="remix-item-panel-inner">
           <p>Most recently, I worked for Facebook on their social team. Our job was to help people see the content their friends are posting — a direct ask from Meta executive leadership (sometimes they’d say jump, you get the rest).</p>
-          <p>We built out a friends-only feed, taking users back to our &ldquo;OG facebook&rdquo; roots, and launched the Friends tab to the US in early 2025. I also learned that a 1px change can affect the company bottom line.</p>
+          <p>We built out a friends-only feed, taking users back to our &ldquo;OG facebook&rdquo; roots, and launched the Friends tab to the US in early 2025, alongside a &ldquo;low key vibes&rdquo; rebrand. I also learned that a 1px change can affect the company bottom line.</p>
           <div class="remix-achievements">
             <p class="remix-achievements-label">Notable life achievements</p>
             <ul class="remix-achievements-list">
@@ -199,6 +199,28 @@
               <div class="story-chart-wrap"><canvas id="fig4" role="img" aria-label="Step chart: layoffs survived rising to 3 by 2025, reorgs weathered rising to about 10, both zero before 2021">Layoffs survived: 1 in 2022, 2 in 2023, 3 in 2025. Reorgs weathered: roughly 10 between 2021 and 2025.</canvas></div>
               <figcaption>The startup years contributed zero data points to either series.</figcaption>
             </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WHAT'S NEXT ── -->
+    <div class="remix-item" data-year="whats-next">
+      <button class="remix-item-header">
+        <span class="remix-item-title">What&rsquo;s next you ask?</span>
+        <span class="remix-item-meta">Present day</span>
+        <span class="remix-item-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="remix-item-panel">
+        <div class="remix-item-panel-inner">
+          <p>Right now I could go deep into content design systems and strategy, or work horizontally across 0-1 projects and emerging tech.</p>
+          <p>I thrive in ambiguous problem spaces, I&rsquo;m relentlessly curious and I learn fast.</p>
+          <p>If you&rsquo;re looking for a writer-UX designer-strategist-content systems builder with an eye for systems and some stories from the water-coolers of Silicon Valley, <strong>then let&rsquo;s chat.</strong></p>
+          <div class="remix-next-photo-wrap">
+            <img src="images/picme4.jpeg" alt="Madeline kneeling next to a large yellow heart-hugging emoji statue" class="remix-next-photo">
+            <span class="remix-pill remix-next-pill-1">coworkers!</span>
+            <span class="remix-pill remix-next-pill-2">more vibes</span>
+            <span class="remix-pill remix-next-pill-3">call me</span>
           </div>
         </div>
       </div>
@@ -274,7 +296,7 @@
 
     function axes(yTicks) {
       return {
-        x: { grid: { display: false }, ticks: { color: MUTE, autoSkip: false, maxRotation: 45 } },
+        x: { grid: { display: false }, ticks: { color: MUTE, autoSkip: false, maxRotation: 45, callback: (val, index) => index % 2 === 0 ? YEARS[index] : '' } },
         y: Object.assign({ beginAtZero: true, grid: { color: GRID }, ticks: Object.assign({ color: MUTE }, yTicks || {}) })
       };
     }
@@ -386,7 +408,7 @@
           } } }
         },
         scales: {
-          x: { grid: { display: false }, ticks: { color: MUTE, autoSkip: false, maxRotation: 45 } },
+          x: { grid: { display: false }, ticks: { color: MUTE, autoSkip: false, maxRotation: 45, callback: (val, index) => index % 2 === 0 ? YEARS[index] : '' } },
           y: { beginAtZero: true, max: 11, grid: { color: GRID }, ticks: { stepSize: 2, color: MUTE, callback: (v) => Math.round(v) } }
         }
       }

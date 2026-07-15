@@ -21,7 +21,7 @@
 
   // ── Staggered entrance for grid/list groups ──
   var staggerTargets = document.querySelectorAll(
-    '.case-grid, .cv-skills, .hello-logos-row'
+    '.case-grid, .cv-skills'
   );
   staggerTargets.forEach(function (group) {
     group.classList.add('reveal-stagger');
