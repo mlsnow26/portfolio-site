@@ -136,6 +136,24 @@ nav a.is-active::before,
   height: 38px;
 }
 
+@media (max-width: 600px) {
+  nav {
+    padding-inline: var(--space-sm);
+  }
+
+  a.logo {
+    font-size: 1.3rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+}
+
 /* ── BUTTONS ─────────────────────────────────────────────────────────────── */
 .btn {
   display: inline-block;
@@ -387,10 +405,13 @@ nav a.is-active::before,
 
 /* ── GET IN TOUCH PAGE ───────────────────────────────────────────────────── */
 .site-footer-bio h2 {
+  display: inline-block;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: var(--space-md);
   margin-left: 16px;
+  padding-bottom: 0.05rem;
+  border-bottom: 3px solid var(--cs-pill);
 }
 
 .site-footer-bio p {
@@ -488,15 +509,23 @@ nav a.is-active::before,
 }
 
 .work-teaser-heading {
+  max-width: var(--cs-col);
+  margin-inline: auto;
   margin-top: var(--space-lg);
   padding-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
   margin-bottom: var(--space-md);
-  margin-left: 16px;
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
+}
+
+.work-teaser-heading span {
+  display: inline-block;
+  margin-left: 16px;
+  padding-bottom: 0.05rem;
+  border-bottom: 3px solid var(--cs-pill);
 }
 
 .case-grid {
@@ -1256,6 +1285,7 @@ nav a.is-active::before,
 /* ── CASE STUDY FOOTER ───────────────────────────────────────────────────── */
 .cs-footer-full {
   background-color: var(--color-bg);
+  padding-inline: var(--space-md);
 }
 
 .cs-footer-nav {
@@ -1618,6 +1648,15 @@ nav a.is-active::before,
   padding: 0.25rem 0.75rem;
 }
 
+@media (max-width: 600px) {
+  .cv-company-header,
+  .cv-role-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+}
+
 @media print {
   .cv-no-print {
     display: none !important;
@@ -1822,6 +1861,8 @@ nav a.is-active::before,
 }
 
 .remix-item-title {
+  flex: 1 1 auto;
+  min-width: 0;
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 400;
@@ -1829,6 +1870,7 @@ nav a.is-active::before,
 }
 
 .remix-item-meta {
+  flex-shrink: 0;
   margin-left: auto;
   margin-right: var(--space-md);
   font-family: 'IBM Plex Mono', monospace;
@@ -2007,10 +2049,6 @@ nav a.is-active::before,
   .remix-pill {
     font-size: 0.72rem;
     padding: 0.4rem 0.8rem;
-  }
-
-  .remix-item-header {
-    flex-wrap: wrap;
   }
 
   .remix-item-meta {
