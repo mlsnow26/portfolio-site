@@ -939,7 +939,7 @@ ul.cs-tldr li::before {
 .cs-section {
   max-width: var(--cs-col);
   margin-inline: auto;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .cs-body > .cs-section:first-child {
@@ -1091,13 +1091,13 @@ ul.cs-tldr li::before {
   border: 1px solid var(--color-text);
   border-radius: 48px;
   padding: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 
 .cs-sample--1 {
   border-radius: 56px;
   padding: 4rem var(--space-lg);
-  margin-bottom: calc(var(--space-xl) - 32px);
+  margin-bottom: var(--space-md);
 }
 
 .cs-sample--2 {
