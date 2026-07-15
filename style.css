@@ -47,7 +47,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--space-xl);
+  height: calc(var(--space-xl) - 16px);
   background-color: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   transition: box-shadow 0.25s ease, border-color 0.25s ease;
@@ -138,7 +138,7 @@ nav a.is-active::before,
 
 @media (max-width: 600px) {
   header {
-    height: calc(var(--space-xl) - 32px);
+    height: calc(var(--space-xl) - 56px);
   }
 
   nav {
