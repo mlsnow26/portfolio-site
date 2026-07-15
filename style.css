@@ -316,7 +316,14 @@ nav a.is-active::before,
   -webkit-text-fill-color: var(--cs-pill);
   -webkit-text-stroke: 1.5px var(--color-text);
   paint-order: stroke fill;
-  text-shadow: -3.5px 3.5px 0 var(--color-text);
+  text-shadow:
+    -0.5px 0.5px 0 var(--color-text),
+    -1px 1px 0 var(--color-text),
+    -1.5px 1.5px 0 var(--color-text),
+    -2px 2px 0 var(--color-text),
+    -2.5px 2.5px 0 var(--color-text),
+    -3px 3px 0 var(--color-text),
+    -3.5px 3.5px 0 var(--color-text);
 }
 
 .hero-line {
