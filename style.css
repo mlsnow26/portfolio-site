@@ -538,12 +538,12 @@ nav a.is-active::before,
   background-color: var(--color-bg);
   background-image: radial-gradient(circle, rgba(194, 199, 208, 0.7) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
-  padding: 7.5rem var(--space-md) 5rem;
+  padding: 3.75rem var(--space-md) 5rem;
 }
 
 @media (max-width: 700px) {
   .work-page {
-    padding-top: var(--space-lg);
+    padding-top: calc(var(--space-lg) / 2);
   }
 }
 
@@ -889,12 +889,12 @@ nav a.is-active::before,
 }
 
 .cs-body {
-  max-width: 980px;
+  max-width: 900px;
   margin-inline: auto;
   background: #fff;
   border: 1px solid var(--color-text);
   border-radius: 40px;
-  padding: var(--space-lg) var(--space-xl);
+  padding: var(--space-lg) calc(var(--space-xl) - 32px);
 }
 
 @media (max-width: 700px) {
@@ -1911,9 +1911,21 @@ nav a.is-active::before,
 .remix-hero-text h1 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-sm);
+  color: var(--cs-pill);
+  -webkit-text-fill-color: var(--cs-pill);
+  -webkit-text-stroke: 1.5px var(--color-text);
+  paint-order: stroke fill;
+  text-shadow:
+    -0.5px 0.5px 0 var(--color-text),
+    -1px 1px 0 var(--color-text),
+    -1.5px 1.5px 0 var(--color-text),
+    -2px 2px 0 var(--color-text),
+    -2.5px 2.5px 0 var(--color-text),
+    -3px 3px 0 var(--color-text),
+    -3.5px 3.5px 0 var(--color-text);
 }
 
 .remix-hero-text p {
