@@ -769,11 +769,14 @@ nav a.is-active::before,
 
 @media (max-width: 700px) {
   .cs-hero-wrapper {
-    padding-block: var(--space-md);
+    padding-top: var(--space-md);
+    padding-bottom: calc(var(--space-md) / 2);
   }
 
   .cs-hero {
-    padding: var(--space-lg) var(--space-md);
+    padding-top: var(--space-lg);
+    padding-bottom: calc(var(--space-lg) / 2);
+    padding-inline: var(--space-md);
   }
 
   .cs-hero-row {
@@ -904,9 +907,6 @@ ul.cs-tldr li::before {
 @media (max-width: 700px) {
   .cs-body-wrapper {
     padding-inline: var(--space-sm);
-  }
-
-  main.cs-body-wrapper {
     padding-top: calc(var(--space-lg) / 2);
   }
 }
@@ -1275,11 +1275,11 @@ ul.cs-tldr li::before {
 .cs-final-image {
   max-width: var(--cs-wide);
   margin-inline: auto;
-  margin-bottom: var(--space-xl);
+  margin-bottom: 0;
   background: var(--cs-fill);
   border: 1px solid var(--color-text);
   border-radius: 24px;
-  padding: var(--space-lg);
+  padding: var(--space-md);
   display: flex;
   justify-content: center;
 }
@@ -1529,6 +1529,7 @@ ul.cs-tldr li::before {
 
   .cs-sample--2 {
     min-height: 0;
+    padding-top: 4rem;
   }
 
   .cs-sample--side {
