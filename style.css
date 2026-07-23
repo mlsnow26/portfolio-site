@@ -1982,11 +1982,66 @@ ul.cs-tldr li::before {
   animation: remix-float 5s ease-in-out infinite;
 }
 
+.remix-pill::before,
+.remix-pill::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--cs-pill);
+  border: 1px solid var(--color-text);
+  box-shadow: -1px 1px 0 var(--color-text);
+}
+
+.remix-pill::before {
+  bottom: -13px;
+  left: 12px;
+  width: 11px;
+  height: 11px;
+}
+
+.remix-pill::after {
+  bottom: -21px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+}
+
 .remix-pill-1 { top: -18px; left: -22px; transform: rotate(-8deg); animation-delay: 0s; }
 .remix-pill-2 { top: 34px; right: -38px; transform: rotate(6deg); animation-delay: 0.6s; }
 .remix-pill-3 { bottom: -22px; right: 20px; transform: rotate(-5deg); animation-delay: 1.2s; }
 .remix-pill-4 { bottom: -20px; left: 10px; transform: rotate(7deg); animation-delay: 1.8s; }
 .remix-pill-5 { top: 140px; left: -44px; transform: rotate(-10deg); animation-delay: 2.4s; }
+
+/* Trail direction: dots point back toward the photo from wherever the pill sits. */
+.remix-pill-1::before, .remix-pill-1::after,
+.remix-pill-5::before, .remix-pill-5::after,
+.remix-next-pill-1::before, .remix-next-pill-1::after {
+  left: auto;
+  right: 12px;
+}
+.remix-pill-1::after, .remix-pill-5::after, .remix-next-pill-1::after {
+  right: 4px;
+}
+
+.remix-pill-3::before, .remix-pill-3::after {
+  bottom: auto;
+  top: -13px;
+}
+.remix-pill-3::after {
+  top: -21px;
+}
+
+.remix-pill-4::before, .remix-pill-4::after,
+.remix-next-pill-3::before, .remix-next-pill-3::after {
+  bottom: auto;
+  top: -13px;
+  left: auto;
+  right: 12px;
+}
+.remix-pill-4::after, .remix-next-pill-3::after {
+  top: -21px;
+  right: 4px;
+}
 
 @keyframes remix-float {
   0%, 100% { translate: 0 0; }
@@ -2213,6 +2268,7 @@ ul.cs-tldr li::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   border-radius: 50%;
